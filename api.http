@@ -1,0 +1,201 @@
+# @base_url = http://localhost:3000
+@base_url = http://3.17.139.144:3000
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGIzNGU3ZmE2Mjg0ZjAwMTVlZDM2YzMiLCJpYXQiOjE2MjU0MTAxMDN9.TVpGX5eqfl-gCtEe5p_2CeVq19xps7BsuW8DZHt66m8
+
+################################ USER ROUTES #################################
+
+# REGISTER
+POST {{base_url}}/user/register HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Ritankar Paul",
+    "email": "validemail@gmail.com",
+    "password": "hellosunshine"
+}
+###
+
+GET {{base_url}}/user/zipcode HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+###
+
+POST {{base_url}}/user/zipcode HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "zipcode": "20001"
+}
+
+###
+
+# LOGIN
+POST {{base_url}}/user/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "validemail@gmail.com",
+    "password": "hellosunshine"
+}
+###
+
+# GOOGLE LOGIN
+POST {{base_url}}/user/google-login HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Ritankar Paul",
+    "email": "validemail@gmail.com"
+}
+###
+
+
+# APPLE LOGIN
+POST {{base_url}}/user/apple-login HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Ritankar Paul",
+    "email": "validemail@gmail.com",
+    "identityToken": "sfno1ridentityToken3rjfomq-fqunfqoufnd342q3f5ni5u3fnif3-"
+}
+###
+
+# SETUP STATUS
+GET {{base_url}}/user/setup-status HTTP/1.1
+Authorization: Bearer {{token}}
+
+
+################################ HUB ROUTES #################################
+
+# CREATE HUB 
+POST {{base_url}}/hub/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "device_id": "wooshairhub"
+}
+###
+
+
+# INITIALIZE USER q
+POST {{base_url}}/hub/link-user HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "device_id": "wooshairhub"
+}
+###
+
+# Check hub status online status
+GET {{base_url}}/hub/online HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+
+# UNLINK USER
+POST {{base_url}}/hub/unlink-user HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "full_reset": true
+}
+###
+
+# FETCH HUB
+GET {{base_url}}/hub/ HTTP/1.1
+Authorization: Bearer {{token}}
+###
+
+
+# LINK THE HUB WITH THE USER
+POST {{base_url}}/hub/link-node HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "node_id": "60e4b96b9ca2cca036eec5d5",
+    "name": "My bedroom filter"
+}
+###
+
+POST {{base_url}}/hub/unlink-node HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "node_id": "60e4b96b9ca2cca036eec5d5"  
+}
+###
+
+################################ NODE/FILTER ROUTES #################################
+
+POST {{base_url}}/node/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "device_id": "AB12Filter"
+}
+###
+
+GET {{base_url}}/node/available/60afa385da224e158790817d HTTP/1.1
+Authorization: Bearer {{token}}
+content-type: application/json
+
+################################ UTILITY ROUTES #################################
+
+GET {{base_url}}/util/get-aqi/20001 HTTP/1.1
+Authorization: Bearer {{token}}
+###
+
+GET {{base_url}}/util/get-aqi-chart/20001 HTTP/1.1
+Authorization: Bearer {{token}}
+###
+
+GET {{base_url}}/util/get-aqi-chart HTTP/1.1
+Authorization: Bearer {{token}}
+###
+
+############################# NOTIFICATION ROUTES ###############################
+
+GET {{base_url}}/notification/all HTTP/1.1
+Authorization: Bearer {{token}}
+###
+
+GET {{base_url}}/notification/read-all HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+###
+
+
+GET {{base_url}}/notification/pending HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+###
+
+# Types are : Success, error, warning show respective icons and background accent and timestamp
+# Use the routes to send dummy notification for testing only
+POST {{base_url}}/notification/create HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "message": "Hi, your filter needs to be changed is online now 2",
+    "type": "Success"
+}
+###
+
+POST {{base_url}}/notification/delete HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "notification_id": "60d63200a2f64118f316bff3"
+}

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "529806778037",
+    "project_id": "woosh-air",
+    "storage_bucket": "woosh-air.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:529806778037:android:7614592cffdc8a0df9e8fc",
+        "android_client_info": {
+          "package_name": "com.example.woosh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "529806778037-cma2p1t4irb233ioqr94p1g49jdp6k9u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBg8YAalD6sA2c6PnHfr5twQM-Z8GUG8QI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "529806778037-cma2p1t4irb233ioqr94p1g49jdp6k9u.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "529806778037-028fuifd6bl49n1pq4tkomujgk5llv71.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.wooshair.woosh"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
